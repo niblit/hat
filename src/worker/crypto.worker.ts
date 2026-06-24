@@ -1,4 +1,4 @@
-import init, { Encryptor, Decryptor, init_panic_hook } from '../wasm/core_crypto.js';
+import init, { Encryptor, Decryptor, init_panic_hook } from '../wasm/core_crypto';
 
 export type WorkerMessage = 
   | { type: 'init' }

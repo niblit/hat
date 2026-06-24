@@ -22,14 +22,14 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
     readonly memory: WebAssembly.Memory;
-    readonly __wbg_decryptor_free: (a: number, b: number) => void;
+    readonly init_panic_hook: () => void;
     readonly __wbg_encryptor_free: (a: number, b: number) => void;
-    readonly decryptor_decrypt_chunk: (a: number, b: number, c: number) => [number, number, number, number];
-    readonly decryptor_new: (a: number, b: number, c: number, d: number) => [number, number, number];
     readonly encryptor_encrypt_chunk: (a: number, b: number, c: number) => [number, number, number, number];
     readonly encryptor_get_header: (a: number) => [number, number];
     readonly encryptor_new: (a: number, b: number) => [number, number, number];
-    readonly init_panic_hook: () => void;
+    readonly __wbg_decryptor_free: (a: number, b: number) => void;
+    readonly decryptor_decrypt_chunk: (a: number, b: number, c: number) => [number, number, number, number];
+    readonly decryptor_new: (a: number, b: number, c: number, d: number) => [number, number, number];
     readonly __wbindgen_exn_store: (a: number) => void;
     readonly __externref_table_alloc: () => number;
     readonly __wbindgen_externrefs: WebAssembly.Table;
