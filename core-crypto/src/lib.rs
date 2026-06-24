@@ -5,7 +5,7 @@ use argon2::{
 };
 use deoxys::DeoxysII256;
 use aead::{AeadInPlace, KeyInit};
-use zeroize::{Zeroize, Zeroizing};
+use zeroize::Zeroizing;
 
 const MAGIC_NUMBER: &[u8] = b".hat file encryption, made with <3 by niblit at hat.niblit.dev";
 const MAGIC_LEN: usize = 62;
@@ -185,7 +185,7 @@ mod tests {
 
     #[test]
     fn test_invalid_magic() {
-        let mut header = vec![0u8; HEADER_LEN];
+        let header = vec![0u8; HEADER_LEN];
         assert!(Decryptor::new("password", &header).is_err());
     }
 }

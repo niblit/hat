@@ -254,11 +254,11 @@ export default function Home() {
               aria-label="Upload file"
               tabIndex={-1}
             />
-            <div className={`w-full max-w-xl aspect-video rounded-3xl border-4 border-dashed transition-all duration-300 flex flex-col items-center justify-center bg-[var(--color-mocha-surface0)]/30 ${isDragging ? 'border-[var(--color-mocha-blue)] scale-105 bg-[var(--color-mocha-blue)]/10' : 'border-[var(--color-mocha-surface1)] group-hover:border-[var(--color-mocha-blue)] group-hover:bg-[var(--color-mocha-surface0)]/50'}`}>
-              <div className="w-16 h-16 rounded-full bg-[var(--color-mocha-blue)] text-[var(--color-mocha-base)] flex items-center justify-center text-4xl mb-6 shadow-lg shadow-[var(--color-mocha-blue)]/20 transition-transform group-hover:scale-110">
+            <div className={`w-full max-w-xl aspect-video rounded-3xl border-4 border-dashed transition-all duration-300 flex flex-col items-center justify-center bg-mocha-surface0/30 ${isDragging ? 'border-mocha-blue scale-105 bg-mocha-blue/10' : 'border-mocha-surface1 group-hover:border-mocha-blue group-hover:bg-mocha-surface0/50'}`}>
+              <div className="w-16 h-16 rounded-full bg-mocha-blue text-mocha-base flex items-center justify-center text-4xl mb-6 shadow-lg shadow-(--color-mocha-blue)/20 transition-transform group-hover:scale-110">
                 +
               </div>
-              <h1 className="text-3xl font-medium text-[var(--color-mocha-text)] tracking-tight">
+              <h1 className="text-3xl font-medium text-mocha-text tracking-tight">
                 Drag & Drop a file
               </h1>
               <p className="mt-2 text-neutral-400 font-light">or click to browse</p>
@@ -268,8 +268,8 @@ export default function Home() {
 
         {step === 2 && (
           <div className="w-full max-w-md animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="inline-block px-6 py-3 rounded-full bg-[var(--color-mocha-surface0)] border border-[var(--color-mocha-surface1)] mb-10 shadow-sm max-w-full truncate">
-              <span className="text-[var(--color-mocha-text)] font-medium truncate" aria-label={`Selected file: ${file?.name}`}>{file?.name}</span>
+            <div className="inline-block px-6 py-3 rounded-full bg-mocha-surface0 border border-mocha-surface1 mb-10 shadow-sm max-w-full truncate">
+              <span className="text-mocha-text font-medium truncate" aria-label={`Selected file: ${file?.name}`}>{file?.name}</span>
             </div>
             <form onSubmit={(e) => { e.preventDefault(); if (password.length >= 8) startProcessing(); }} className="flex flex-col gap-6">
               <div className="relative">
@@ -278,7 +278,7 @@ export default function Home() {
                   autoFocus
                   aria-label="Password (min 8 chars)"
                   placeholder="Password (min 8 chars)"
-                  className="w-full bg-transparent border-b-2 border-[var(--color-mocha-surface1)] text-center text-3xl font-light py-4 focus:outline-none focus:border-[var(--color-mocha-blue)] transition-colors placeholder:text-neutral-500 text-[var(--color-mocha-text)] pr-12"
+                  className="w-full bg-transparent border-b-2 border-mocha-surface1 text-center text-3xl font-light py-4 focus:outline-none focus:border-mocha-blue transition-colors placeholder:text-neutral-500 text-mocha-text pr-12"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   minLength={8}
@@ -288,7 +288,7 @@ export default function Home() {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   aria-label={showPassword ? "Hide password" : "Reveal password"}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-neutral-500 hover:text-[var(--color-mocha-text)] transition-colors focus:outline-none"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 p-2 text-neutral-500 hover:text-mocha-text transition-colors focus:outline-none"
                 >
                   {showPassword ? (
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
@@ -301,7 +301,7 @@ export default function Home() {
                 type="submit" 
                 aria-disabled={password.length < 8}
                 disabled={password.length < 8}
-                className="mt-6 bg-[var(--color-mocha-surface0)] border border-[var(--color-mocha-surface1)] text-[var(--color-mocha-text)] rounded-full py-4 px-8 text-sm font-medium tracking-wide uppercase disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[var(--color-mocha-surface1)] transition-colors"
+                className="mt-6 bg-mocha-surface0 border border-mocha-surface1 text-mocha-text rounded-full py-4 px-8 text-sm font-medium tracking-wide uppercase disabled:opacity-50 disabled:cursor-not-allowed hover:bg-mocha-surface1 transition-colors"
               >
                 {file?.name.endsWith('.hat') ? 'Decrypt File' : 'Encrypt File'}
               </button>
@@ -311,7 +311,7 @@ export default function Home() {
 
         {step === 3 && (
           <div className="w-full max-w-md animate-in fade-in duration-500" aria-live="assertive">
-            <h2 className="text-xl font-light mb-12 text-[var(--color-mocha-text)]">{isEncrypting ? 'Encrypting...' : 'Decrypting...'}</h2>
+            <h2 className="text-xl font-light mb-12 text-mocha-text">{isEncrypting ? 'Encrypting...' : 'Decrypting...'}</h2>
             
             <div 
               role="progressbar" 
@@ -319,15 +319,15 @@ export default function Home() {
               aria-valuemin={0} 
               aria-valuemax={100}
               aria-label={isEncrypting ? "Encryption progress" : "Decryption progress"}
-              className="w-full h-2 bg-[var(--color-mocha-surface0)] rounded-full overflow-hidden relative shadow-inner"
+              className="w-full h-2 bg-mocha-surface0 rounded-full overflow-hidden relative shadow-inner"
             >
               <div 
-                className="absolute top-0 left-0 h-full bg-[var(--color-mocha-blue)] transition-all duration-300 ease-out"
+                className="absolute top-0 left-0 h-full bg-mocha-blue transition-all duration-300 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
             
-            <p className="mt-6 text-sm text-[var(--color-mocha-text)] font-light tracking-wide">{eta}</p>
+            <p className="mt-6 text-sm text-mocha-text font-light tracking-wide">{eta}</p>
           </div>
         )}
 
@@ -335,18 +335,18 @@ export default function Home() {
           <div className="w-full max-w-md animate-in zoom-in-95 duration-500" aria-live="assertive">
             {errorMsg ? (
               <>
-                <h1 className="text-4xl font-bold text-[var(--color-mocha-base)] mb-6 tracking-tight">Access Denied</h1>
-                <p className="text-[var(--color-mocha-base)]/80 font-medium mb-12">{errorMsg}</p>
+                <h1 className="text-4xl font-bold text-mocha-base mb-6 tracking-tight">Access Denied</h1>
+                <p className="text-mocha-base/80 font-medium mb-12">{errorMsg}</p>
               </>
             ) : (
               <>
-                <h1 className="text-4xl font-bold text-[var(--color-mocha-base)] mb-6 tracking-tight">Success</h1>
-                <p className="text-[var(--color-mocha-base)]/80 font-medium mb-12 text-xl truncate">{finalFileName}</p>
+                <h1 className="text-4xl font-bold text-mocha-base mb-6 tracking-tight">Success</h1>
+                <p className="text-mocha-base/80 font-medium mb-12 text-xl truncate">{finalFileName}</p>
                 <a 
                   href={downloadUrl!} 
                   download={finalFileName}
                   aria-label={`Download ${finalFileName}`}
-                  className="inline-block bg-[var(--color-mocha-base)] text-[var(--color-mocha-text)] rounded-full py-4 px-12 text-sm font-semibold tracking-wide uppercase hover:bg-[var(--color-mocha-surface0)] transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
+                  className="inline-block bg-mocha-base text-mocha-text rounded-full py-4 px-12 text-sm font-semibold tracking-wide uppercase hover:bg-mocha-surface0 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1"
                 >
                   Download
                 </a>
@@ -357,7 +357,7 @@ export default function Home() {
               <button 
                 onClick={resetAll}
                 aria-label="Process another file"
-                className="text-sm font-semibold tracking-wider uppercase text-[var(--color-mocha-base)]/70 hover:text-[var(--color-mocha-base)] transition-colors underline decoration-transparent hover:decoration-[var(--color-mocha-base)] underline-offset-4"
+                className="text-sm font-semibold tracking-wider uppercase text-mocha-base/70 hover:text-mocha-base transition-colors underline decoration-transparent hover:decoration-mocha-base underline-offset-4"
               >
                 Process another file
               </button>
@@ -371,11 +371,11 @@ export default function Home() {
         <div className="flex items-center gap-4">
           {[1, 2, 3, 4].map((s, index) => (
             <div key={s} className="flex items-center">
-              <div className={`w-3 h-3 rounded-full transition-all duration-500 ${step >= s ? 'bg-[var(--color-mocha-blue)] shadow-[0_0_10px_var(--color-mocha-blue)]' : 'border border-[var(--color-mocha-surface1)] bg-transparent'}`} />
+              <div className={`w-3 h-3 rounded-full transition-all duration-500 ${step >= s ? 'bg-mocha-blue shadow-[0_0_10px_var(--color-mocha-blue)]' : 'border border-mocha-surface1 bg-transparent'}`} />
               {index < 3 && (
-                <div className="w-12 h-[2px] mx-2 relative overflow-hidden bg-[var(--color-mocha-surface0)]">
+                <div className="w-12 h-[2px] mx-2 relative overflow-hidden bg-mocha-surface0">
                   <div 
-                    className="absolute top-0 left-0 h-full bg-[var(--color-mocha-blue)] transition-all duration-500"
+                    className="absolute top-0 left-0 h-full bg-mocha-blue transition-all duration-500"
                     style={{ width: step > s ? '100%' : '0%' }}
                   />
                 </div>
