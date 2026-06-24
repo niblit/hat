@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "build-wasm": "wasm-pack build core-crypto --target web --out-dir ../public/wasm && mv public/wasm/*.js public/wasm/*.d.ts src/wasm/ && sed -i \"s/new URL('core_crypto_bg.wasm', import.meta.url)/'\\/wasm\\/core_crypto_bg.wasm'/g\" src/wasm/core_crypto.js",
+    "dev": "npm run build-wasm && next dev",
+    "build": "npm run build-wasm && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "16.2.9",

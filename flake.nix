@@ -37,6 +37,27 @@
             export NPM_CONFIG_UPDATE_NOTIFIER=false
           '';
         };
+
+        apps = {
+          default = {
+            type = "app";
+            program = "${pkgs.writeShellScriptBin "run-dev" ''
+              export PATH=${pkgs.nodejs_24}/bin:${pkgs.wasm-pack}/bin:${rustToolchain}/bin:$PATH
+              export NEXT_TELEMETRY_DISABLED=1
+              npm install
+              npm run dev
+            ''}/bin/run-dev";
+          };
+          build = {
+            type = "app";
+            program = "${pkgs.writeShellScriptBin "run-build" ''
+              export PATH=${pkgs.nodejs_24}/bin:${pkgs.wasm-pack}/bin:${rustToolchain}/bin:$PATH
+              export NEXT_TELEMETRY_DISABLED=1
+              npm install
+              npm run build
+            ''}/bin/run-build";
+          };
+        };
       }
     );
 }

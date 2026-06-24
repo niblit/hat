@@ -445,7 +445,7 @@ async function __wbg_init(module_or_path) {
         }
     }
 
-    if (typeof module_or_path === 'undefined') {
+    if (module_or_path === undefined) {
         module_or_path = '/wasm/core_crypto_bg.wasm';
     }
     const imports = __wbg_get_imports();
